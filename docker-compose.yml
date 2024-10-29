@@ -1,0 +1,17 @@
+version: '1'
+services:
+    colaboraai-server:
+        container_name: colaboraai-server
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: colaboraai-server:latest
+        ports:
+            - 8080:8080
+        env_file:
+            - src/main/resources/.env
+        networks:
+            - spring-cloud-network
+networks:
+    spring-cloud-network:
+        driver: bridge
